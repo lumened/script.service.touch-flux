@@ -32,7 +32,32 @@ def nav_select():
 def nav_back():
     request = '{"jsonrpc": "2.0", "method": "Input.Back", "params": { }, "id": 1}'
     xbmc.executeJSONRPC(request)
+
+'''
+    Playback Functions
+    - Play/Pause
+    - Volume Control
+'''
+
+def playback_vol_inc():
+#    request = '{"jsonrpc": "2.0", "method": "Application.GetProperties", "params": { "properties" : [
+#    "volume", 
+#    "muted", 
+#    "name", 
+#    "version"
+#  ] }, "id": 1}'
+#    volume = xbmc.executeJSONRPC(request)
+#    print(volume)
+#    volume = int(volume) + 5
+    request = '{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": { "volume" : "increment" }, "id": 1}'
+    xbmc.executeJSONRPC(request)
+
+def playback_vol_dec():
+    request = '{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": { "volume" : "decrement" }, "id": 1}'
+    xbmc.executeJSONRPC(request)
  
+
+
 def notify_start():
     __addon__       = xbmcaddon.Addon()
     __addonname__   = __addon__.getAddonInfo('name')
@@ -43,9 +68,11 @@ def notify_start():
     
     xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time_delay, __icon__))
  
+'''
+    Test Code
+'''
 
-def unit_tests():
-    
+def nav_unit_test():
     
     time.sleep(1)
     nav_up()
@@ -76,11 +103,28 @@ def unit_tests():
     nav_right()
     nav_right()
     
+def playback_unit_test():
+
+    playback_vol_inc()
+    time.sleep(2)
+    playback_vol_inc()
+    time.sleep(2)
+    playback_vol_inc()
+    time.sleep(2)
+    playback_vol_dec()
+    time.sleep(2)
+    playback_vol_dec()
+    time.sleep(2)
+    playback_vol_dec()
+    time.sleep(2)
+
     
 #Add-on Execution Starts
 notify_start()   
 
-#while (not xbmc.abortRequested):
+while (not xbmc.abortRequested):
+    playback_unit_test()
+
     '''
     result = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.SetMute", "params": { "mute": "toggle" }, "id": 1}')
     time.sleep(2)
