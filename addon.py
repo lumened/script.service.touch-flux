@@ -7,7 +7,6 @@ import xbmcaddon
     - Up, Down, Left and Right for basic navigation
     - Select to enter an element
     - Back to return to previous level
-    - 
 '''
 
 def nav_up():
@@ -45,15 +44,9 @@ def notify_start():
     xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time_delay, __icon__))
  
 
-notify_start()   
-#while (not xbmc.abortRequested):
-    '''
-    result = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.SetMute", "params": { "mute": "toggle" }, "id": 1}')
-    time.sleep(2)
-    result = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.SetMute", "params": { "mute": "toggle" }, "id": 1}')
-    time.sleep(2)
-    '''
-    '''Testing
+def unit_tests():
+    
+    
     time.sleep(1)
     nav_up()
     time.sleep(1)
@@ -82,5 +75,16 @@ notify_start()
     nav_right()
     nav_right()
     nav_right()
+    
+    
+#Add-on Execution Starts
+notify_start()   
+
+#while (not xbmc.abortRequested):
+    '''
+    result = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.SetMute", "params": { "mute": "toggle" }, "id": 1}')
+    time.sleep(2)
+    result = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.SetMute", "params": { "mute": "toggle" }, "id": 1}')
+    time.sleep(2)
     '''
     
