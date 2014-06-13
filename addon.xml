@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.service.touch-flux" name="Touch for Flux" version="0.0.1" provider-name="Asheesh Ranjan">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="xbmc.json" version="6.0.0"/>
+    <import addon="xbmc.gui" version="4.0.0"/>
+  </requires>
+  <extension point="xbmc.service" library="addon.py">
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">This provides the XBMC side support for external input devices.</summary>
+    <description lang="en">This provides the XBMC side support for external input devices.</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <platform>linux</platform>
+    <license>GNU GENERAL PUBLIC LICENSE Version 2</license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source>http://github.com/</source>
+  </extension>
+</addon>
