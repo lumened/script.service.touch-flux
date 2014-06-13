@@ -3,7 +3,7 @@ script.service.touch-flux
 
 XBMC add-on that provides an interface and support for touchscreens on the Raspberry Pi. 
 
-#Installation 
+##Installation 
 
 ###From tarball
 
