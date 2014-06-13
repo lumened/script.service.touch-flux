@@ -1,4 +1,5 @@
 import time
+import json
 import xbmc
 import xbmcaddon
 
@@ -55,7 +56,25 @@ def playback_vol_inc():
 def playback_vol_dec():
     request = '{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": { "volume" : "decrement" }, "id": 1}'
     xbmc.executeJSONRPC(request)
- 
+
+def playback_find_player():
+    request = '{"jsonrpc": "2.0", "method": "Player.GetActivePlayers", "id": 1}'
+    player_list = xbmc.executeJSONRPC(request)
+    print(player_list)
+    try :
+        player_id = json.JSONDecoder().decode(player_list)['result'][0]['playerid']
+        return player_id
+    except IndexError:
+        print("No players active")
+        return
+
+
+def playback_toggle_play(): 
+    player_id = playback_find_player()
+    if player_id == None : return
+    request = '{"jsonrpc": "2.0", "method": "Player.PlayPause", "params": { "playerid": ' + str(player_id) + ' } , "id": 1}'
+    xbmc.executeJSONRPC(request)
+
 
 
 def notify_start():
@@ -104,7 +123,10 @@ def nav_unit_test():
     nav_right()
     
 def playback_unit_test():
-
+    
+    playback_toggle_play()
+    time.sleep(4)
+    '''
     playback_vol_inc()
     time.sleep(2)
     playback_vol_inc()
@@ -117,6 +139,7 @@ def playback_unit_test():
     time.sleep(2)
     playback_vol_dec()
     time.sleep(2)
+    '''
 
     
 #Add-on Execution Starts
