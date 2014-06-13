@@ -75,6 +75,16 @@ def playback_toggle_play():
     request = '{"jsonrpc": "2.0", "method": "Player.PlayPause", "params": { "playerid": ' + str(player_id) + ' } , "id": 1}'
     xbmc.executeJSONRPC(request)
 
+def playback_status():
+    player_id = playback_find_player()
+    if player_id == None : return
+    request = '{"jsonrpc": "2.0", "method": "Player.GetItem", "params": { "properties": ["title", "album", "artist", "duration", "thumbnail", "file", "fanart", "streamdetails"], "playerid":' + str(player_id) +  ' }, "id": "AudioGetItem"}'
+    current = xbmc.executeJSONRPC(request)
+    title = json.JSONDecoder().decode(current)['result']['item']['title']
+    #print title
+    return title
+    
+
 
 
 def notify_start():
@@ -124,7 +134,8 @@ def nav_unit_test():
     
 def playback_unit_test():
     
-    playback_toggle_play()
+    #playback_toggle_play()
+    playback_status()
     time.sleep(4)
     '''
     playback_vol_inc()
