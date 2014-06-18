@@ -7,25 +7,10 @@ from gui_button import *
 from api_interface import *
 #if __name__ == '__main__':
 
-# Global Variables
-
-#Defining rectangular buttons
-btn1 = Button('Button 1(^)')
-btn2 = Button('Button 2(!^)')
-btn3 = Button('Button 3(Back)')
-btn4 = Button('Button 4(Play/Pause)')
-btn5 = Button('Button 5(Enter)')
-#defining Triangular Buttons
-btn6 = Button('Button 6(Up)')
-btn7 = Button('Button 7(Left)')
-btn8 = Button('Button 8(Down)')
-btn9 = Button('Button 9(Right)')
-   
-
-
 def start_gui():
    global screen
    global clock
+   global btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9
 
    pygame.init()
    print __name__
@@ -63,15 +48,27 @@ def start_gui():
          pygame.font.init()
       # render the screen
          pygame.display.update()
-            
+
+#Defining rectangular buttons
+   btn1 = Button('Button 1(^)')
+   btn2 = Button('Button 2(!^)')
+   btn3 = Button('Button 3(Back)')
+   btn4 = Button('Button 4(Play/Pause)')
+   btn5 = Button('Button 5(Enter)')
+#defining Triangular Buttons
+   btn6 = Button('Button 6(Up)')
+   btn7 = Button('Button 7(Left)')
+   btn8 = Button('Button 8(Down)')
+   btn9 = Button('Button 9(Right)')            
 
    #setting display mode and resolution
-      screen = pygame.display.set_mode((320,240))
-      clock = pygame.time.Clock()
+   screen = pygame.display.set_mode((320,240))
+   clock = pygame.time.Clock()
 
 def update_gui():
    global screen
    global clock
+   global btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9
 
    screen.fill((255,255,255))
    mouse = pygame.mouse.get_pos()
