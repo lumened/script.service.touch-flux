@@ -5,6 +5,7 @@ import xbmcaddon
 
 from resources.lib.api_interface import *
 from resources.lib.api_test import *
+from resources.lib.gui_interface import *
 
 def notify_start():
     __addon__       = xbmcaddon.Addon()
@@ -15,14 +16,20 @@ def notify_start():
     time_delay = 5000  #in miliseconds
     
     xbmc.executebuiltin('Notification(%s, %s, %d, %s)'%(__addonname__,line1, time_delay, __icon__))
+
  
 
     
 #Add-on Execution Starts
 notify_start()   
+start_gui()
 
 while (not xbmc.abortRequested):
-    playback_unit_test()
+    update_gui()
+
+#pygame.event.Event(QUIT)
+
+#    playback_unit_test()
 
     '''
     result = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.SetMute", "params": { "mute": "toggle" }, "id": 1}')

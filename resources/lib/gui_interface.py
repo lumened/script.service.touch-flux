@@ -1,9 +1,10 @@
 #!/usr/bin/python
-INDEP = True
+INDEP = False
 DEBUG = True
 
 import pygame, os, time
 from gui_button import *
+from api_interface import *
 #if __name__ == '__main__':
 
 # Global Variables
@@ -75,9 +76,9 @@ def update_gui():
    screen.fill((255,255,255))
    mouse = pygame.mouse.get_pos()
    for event in pygame.event.get():
-      if event.type == pygame.QUIT:
-         run = False
-      elif event.type == pygame.MOUSEBUTTONDOWN:
+#      if event.type == pygame.QUIT:
+#         run = False
+      if event.type == pygame.MOUSEBUTTONDOWN:
          if btn1.obj.collidepoint(mouse):
                #Increase Volume Handler
             if not INDEP : playback_vol_inc()
