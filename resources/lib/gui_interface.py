@@ -1,11 +1,13 @@
 #!/usr/bin/python
-INDEP = False
-DEBUG = True
+
+#Switches
+INDEP = False #To test outside of XBMC
+DEBUG = True  #To enable debugging messages
 
 import pygame, os, time
 from gui_button import *
 from api_interface import *
-#if __name__ == '__main__':
+
 
 def start_gui():
    global screen
