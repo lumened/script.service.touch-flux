@@ -1,8 +1,9 @@
 #!/usr/bin/python
+DEBUG = True #To enable debugging options
+INDEP = True #To execution outside of XBMC
 import pygame, os, time
 
-pygame.init()
-print __name__
+if not DEBUG or not INDEP : from api_interface import *
 
 class Button:
    os.environ["SDL_FBDEV"] = "/dev/fb1"
@@ -49,7 +50,12 @@ class Button:
 # End of Class Definition
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def start_gui():
+   
+   pygame.init()
+   print __name__
+
    disp_no = os.getenv("DISPLAY")
    if disp_no:
       print "I'm running under X display = {0}".format(disp_no)
@@ -106,9 +112,15 @@ if __name__ == '__main__':
             run = False
          elif event.type == pygame.MOUSEBUTTONDOWN:
             if btn1.obj.collidepoint(mouse):
+               #Increase Volume Handler
+               if not INDEP : playback_vol_inc()
                print('button 1 clicked')
+
             elif btn2.obj.collidepoint(mouse):
+               #Decrease Volume Handler
+               if not INDEP : playback_vol_dec()
                print('button 2 clicked')
+
             elif btn3.obj.collidepoint(mouse):
                print('button 3 clicked')
             if btn4.obj.collidepoint(mouse):
@@ -138,3 +150,6 @@ if __name__ == '__main__':
       
       pygame.display.update()
       clock.tick(60)
+
+
+if INDEP : start_gui()
